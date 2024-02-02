@@ -25,4 +25,6 @@ Sorting algorithms visualizations
 Different simulations, like the Conway's Game of Life, boids etc
 
 - [Boids](simulations/boids.py)
+![image](https://github.com/Perchinka/Funny_CS/assets/34923601/63ebc26e-5703-4bf2-beb0-84b0af4c13d4)
+
 
