@@ -4,7 +4,7 @@ from collections import defaultdict
 import numpy as np
 import math
 
-BIRD_COUNT = 2000
+BIRD_COUNT = 1000
 PERSONAL_SPACE = 1
 SCREEN_WIDTH = 1400
 SCREEN_HEIGHT = 800
