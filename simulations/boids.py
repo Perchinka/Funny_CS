@@ -1,17 +1,26 @@
 import pygame
 import random
 from collections import defaultdict
-import numpy as np
 import math
 
-BIRD_COUNT = 1000
+BIRD_COUNT = 500
 PERSONAL_SPACE = 1
 SCREEN_WIDTH = 1400
 SCREEN_HEIGHT = 800
 CELL_SIZE = 30
 BIRD_SIZE = 2
-MOUSE_SPEED_DUMPING = 0.001
+MOUSE_SPEED_DUMPING = 0.005
 MAX_SPEED = 5
+FOLLOW_HEART = False
+
+
+def get_heart_position(t):
+    x = 12 * math.sin(t) ** 3
+    y = 6 * math.cos(t) - 2 * math.cos(2*t) - 2 * math.cos(3*t) - math.cos(4*t)
+    
+    x = SCREEN_WIDTH / 2 + x * CELL_SIZE
+    y = SCREEN_HEIGHT / 2 - y * CELL_SIZE
+    return x, y
 
 class Grid:
     def __init__(self):
@@ -43,6 +52,7 @@ class Bird:
         self.mouse_radius = 200 
         self.color_mode = 1
         self.random_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+        self.t = random.uniform(0, 2 * math.pi)
     
     def follow_mouse(self):
         mouse_position = pygame.Vector2(pygame.mouse.get_pos())
@@ -57,8 +67,22 @@ class Bird:
                 steer = pygame.Vector2()
             self.velocity += steer
 
+    def move_towards_heart(self):
+        target_x, target_y = get_heart_position(self.t)
+        
+        dx = target_x - self.x
+        dy = target_y - self.y
+        
+        distance = math.sqrt(dx**2 + dy**2)
+        dx *= MAX_SPEED / distance
+        dy *= MAX_SPEED / distance
+        
+        self.velocity += pygame.Vector2(dx, dy) * 0.1
+        self.t += 0.01
 
     def move(self, neighbors):
+        if FOLLOW_HEART:
+            self.move_towards_heart()
         self.alignment(neighbors)
         self.cohesion(neighbors)
         self.separation(neighbors)
@@ -169,6 +193,9 @@ def main():
                 elif event.key == pygame.K_6:
                     for bird in birds:
                         bird.color_mode = 6
+                elif event.key == pygame.K_h:
+                    global FOLLOW_HEART
+                    FOLLOW_HEART = not FOLLOW_HEART
 
         grid = Grid()
         screen.fill((0, 0, 0))

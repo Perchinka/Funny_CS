@@ -7,8 +7,9 @@ CIRCLE_RADIUS = 300
 CREATURE_SIZE = 1
 CREATURES_AMOUNT = 100
 CIRCLE_SPEED_CHANGE = 0.5
-CHANCE_TO_REPRODUCE = 0.015
-MUTATION_RATE = 0.2
+CHANCE_TO_REPRODUCE = 0.01
+MUTATION_RATE = 0.15
+CREATURES_LIMIT = 2000
 
 class Creature:
     def __init__(self, x, y, speedX, speedY):
@@ -58,9 +59,10 @@ class World:
                 else:
                     self.creatures.remove(creature)
                 continue
-            child = creature.reproduce()
-            if child is not None:
-                self.creatures.append(child)
+            if len(self.creatures) < CREATURES_LIMIT:
+                child = creature.reproduce()
+                if child is not None:
+                    self.creatures.append(child)
             if not creature.inside_circle(self.circle_x, self.circle_y, self.circle_radius):
                 creature.is_dead = True
 
