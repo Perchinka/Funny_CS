@@ -32,7 +32,7 @@ def bfs(start, end, screen, grid):
 
     node = end
     while node.previous is not None:
-        pygame.time.delay(50)
+        pygame.time.delay(30)
         node = node.previous
         node.make_path()
         draw(screen, grid)

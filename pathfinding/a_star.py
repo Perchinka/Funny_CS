@@ -9,9 +9,9 @@ def a_star(start, end, screen, grid):
     start.distance = 0
     open_set = []
     heapq.heappush(open_set, (0, start))
-
+    
     while open_set:
-        pygame.time.delay(30)
+        pygame.time.delay(10)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -40,7 +40,7 @@ def a_star(start, end, screen, grid):
 
     node = end
     while node.previous is not None:
-        pygame.time.delay(50)
+        pygame.time.delay(30)
         node = node.previous
         node.make_path()
         draw(screen, grid)

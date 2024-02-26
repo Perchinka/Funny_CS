@@ -1,0 +1,121 @@
+html{
+            scroll-behavior: smooth;
+        }
+        @font-face {
+            font-family: 'Futhark';
+            src: url('fonts/Font.otf') format('opentype');
+        }
+        h1, h2 {
+            font-family: 'Futhark', sans-serif;
+            font-size: 3em;
+            font-weight: bold;
+            border-bottom: 1px solid #3e4a52;
+        }
+        h1 {
+            color: #000;
+            text-align: center;
+        }
+      body {
+        background-image: url('https://t3.ftcdn.net/jpg/00/32/22/14/360_F_32221493_P9a74TqHegjfiOA7TpxYDmDiCzNmulDA.jpg');
+        background-size: cover;
+        font-family: 'Indie Flower', cursive;
+        padding: 50px;
+        color: #3e4a52;
+      }
+      p {
+        color: #333;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      p::first-letter{
+        font-size: 4em;
+        color: #d40808;
+        font: bold;
+        font-family: 'Futhark', sans-serif;
+        white-space: nowrap;
+      }
+      h1 {
+        border-bottom: 2px solid #3e4a52;
+      }
+      h2 {
+        color: #1c1f20;
+        margin-top: 2em;
+      }
+        img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+      .scroll {
+        background-color: rgba(255, 208, 155, 0.466);
+        padding: 50px;
+        border-radius: 50px;
+        width: 80%;
+        margin: 0 auto;
+      }
+      .image-text {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        border: 1px solid #3e4a52;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #0e010179;
+        border-radius: 10px;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+      }
+
+      nav li {
+        flex-grow: 1;
+        text-align: center;
+      }
+
+      nav li a {
+        display: block;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      nav li a:hover {
+        background-color: #272727;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        width: 31%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 10px;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        transition: 0.3s;
+      }
+
+      .dropdown-content a:hover {background-color: #999999;}
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
